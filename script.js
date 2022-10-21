@@ -1,10 +1,15 @@
-let money = prompt("Ваш бюджет на месяц?")
-let time = prompt("Введите дату рождения")
+let money, time
 
-let a1 = prompt("Введите статью расходов")
-let a2 = prompt("Во сколько обойдется")
-let a3 = prompt("Введите статью расходов")
-let a4 = prompt("Во сколько обойдется")
+
+function start() {
+    money = prompt("Ваш бюджет на месяц?")
+    time = prompt("Введите дату рождения")
+
+    while (isNaN(money) || money == "" || money == null){
+        money = prompt("Ваш бюджет на месяц?")
+    }
+}
+start()
 
 
 let appData = {
@@ -16,7 +21,26 @@ income: [],
 savings: false
 }
 
-appData.expenses.a1 = a2;
-appData.expenses.a3 = a4;
+function chooseExpenses() {
+    for (let i=0; i<2; i++){
+        let a = prompt("Введите статью расходов")
+        let b = prompt("Во сколько обойдется")
+    
+        if ((typeof(a)) === "string" && (typeof(a)) != null && (typeof(b)) 
+        != null && a != "" && b != "" && a.length < 50 ){
+            appData.expenses[a] = b
+        } else {
+            i = i - 1
+        }
+    }
+}
+chooseExpenses()
 
-alert(money / 30)
+
+
+
+appData.moneyDay = (appData.moneys / 30).toFixed()
+
+
+
+alert(appData.moneyDay)
